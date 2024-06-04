@@ -14,7 +14,7 @@ const validateProduct = [
 router.get('/', async (req, res) => {
   try {
     const productRepository = getRepository(Product);
-    const products = await productRepository.find();
+    const products = await productRepository.find({ order: { id: 'ASC' } });
     res.json(products);
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
